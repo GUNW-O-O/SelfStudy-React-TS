@@ -1,0 +1,1 @@
+console.log("TypeScript 기본 타입 실습")
