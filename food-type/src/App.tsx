@@ -64,7 +64,7 @@ function App() {
       itemToAdd = {
         ...item,
         selectedIngredients: options.selectedIngredients,
-        spicyLevel: options.spicyLevel
+        spicyLevel: options.spicyLevel as 0 | 1 | 2 | 3 | undefined // 타입 단언 추가
       };
     } else {
       // 고정 메뉴이거나 커스터마이징 옵션이 없는 경우
