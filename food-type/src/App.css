@@ -1,42 +1,269 @@
+/* src/App.css - 배민스러운 스타일 */
+
+/* 전역 스타일 및 기본 설정 */
+:root {
+  --baemin-green: #2AC1BC;
+  /* 배민 시그니처 그린 */
+  --baemin-dark-green: #1A9F9C;
+  --text-dark: #333;
+  --text-light: #666;
+  --border-light: #eee;
+  --bg-light: #f8f8f8;
+  --bg-white: #fff;
+  --shadow-light: rgba(0, 0, 0, 0.08);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+}
+
+body {
+  font-family: 'BM Hanna Pro', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
 #root {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.App {
+  background-color: var(--bg-white);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 20px var(--shadow-light);
+  padding: 30px;
+  margin-bottom: 50px;
+  /* 푸터 공간 확보 */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+  color: var(--baemin-dark-green);
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+h2 {
+  font-size: 2rem;
+  color: var(--text-dark);
+  margin-top: 40px;
+  margin-bottom: 25px;
+  font-weight: bold;
 }
 
-.card {
-  padding: 2em;
+h3 {
+  font-size: 1.5rem;
+  color: var(--baemin-dark-green);
+  margin-top: 0;
+  margin-bottom: 15px;
 }
 
-.read-the-docs {
-  color: #888;
+p {
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* 메뉴 디스플레이 그리드 */
+.menu-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 30px;
+}
+
+/* 개별 메뉴 카드 스타일 */
+.menu-item-card {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  background-color: var(--bg-white);
+  box-shadow: 0 2px 10px var(--shadow-light);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.menu-item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+.menu-item-card p {
+  margin: 8px 0;
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+.fixed-options,
+.customizable-options {
+  margin-top: 15px;
+}
+
+.menu-item-card button {
+  padding: 10px 18px;
+  background-color: var(--baemin-green);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 20px;
+  align-self: flex-end;
+  transition: background-color 0.2s ease;
+  font-weight: bold;
+}
+
+.menu-item-card button:hover {
+  background-color: var(--baemin-dark-green);
+}
+
+.ingredient-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.ingredient-list li {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-light);
+  padding: 8px 12px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 장바구니 스타일 */
+.cart-items ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.cart-items li {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-light);
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: var(--radius-sm);
+  text-align: left;
+  font-size: 1rem;
+  color: var(--text-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-total {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--baemin-dark-green);
+  margin-top: 30px;
+  text-align: right;
+  padding-right: 15px;
+}
+
+/* 기본 Vite/React 로고 및 카운터 관련 요소 숨기기 (필요하다면) */
+/* .logo, .card, .read-the-docs {
+  display: none;
+} */
+/* src/App.css - MenuDisplay 내부 커스터마이징 관련 스타일 추가 */
+
+.spicy-level-selection {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+  /* 가운데 정렬 */
+  flex-wrap: wrap;
+}
+
+.spicy-level-button {
+  padding: 8px 15px;
+  border: 1px solid var(--baemin-green);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-white);
+  color: var(--baemin-green);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: bold;
+}
+
+.spicy-level-button.active {
+  background-color: var(--baemin-green);
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.spicy-level-button:hover:not(.active) {
+  background-color: var(--baemin-green);
+  color: white;
+}
+
+.ingredient-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.add-ingredient {
+  padding: 6px 12px;
+  background-color: #007bff;
+  /* 파란색 */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 0.85rem;
+}
+
+.add-ingredient:hover {
+  background-color: #0056b3;
+}
+
+.remove-ingredient {
+  padding: 6px 12px;
+  background-color: #dc3545;
+  /* 빨간색 */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 0.85rem;
+}
+
+.remove-ingredient:hover {
+  background-color: #c82333;
+}
+
+.selected-ingredients-summary {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #e6f7ff;
+  /* 연한 파란색 배경 */
+  border: 1px solid #91d5ff;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  color: var(--text-dark);
 }
